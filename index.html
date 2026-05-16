@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+
+<!-- SEO -->
+<title>LocalFix - बिश्रामपुर सेवा App | Plumber Electrician Maid Driver</title>
+<meta name="description" content="बिश्रामपुर में तुरंत सेवा - Plumber, Electrician, Maid, AC Repair, Driver, Rajmistri. 30 मिनट में घर पर।"/>
+<meta name="keywords"    content="plumber bishrampur, electrician bishrampur, maid bishrampur, localfix, local service"/>
+<meta name="author"      content="LocalFix Bishrampur"/>
+<meta name="robots"      content="index,follow"/>
+
+<!-- PWA -->
+<meta name="theme-color"                    content="#FF6B00"/>
+<meta name="mobile-web-app-capable"         content="yes"/>
+<meta name="apple-mobile-web-app-capable"   content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title"     content="LocalFix"/>
+<meta name="application-name"               content="LocalFix"/>
+<meta name="msapplication-TileColor"        content="#FF6B00"/>
+<meta name="msapplication-TileImage"        content="/icons/icon-144.png"/>
+
+<!-- Open Graph -->
+<meta property="og:title"       content="LocalFix - बिश्रामपुर सेवा App"/>
+<meta property="og:description" content="30 मिनट में Plumber, Electrician, Maid - Verified Workers"/>
+<meta property="og:type"        content="website"/>
+<meta property="og:url"         content="https://localfix-bishrampur.vercel.app"/>
+<meta property="og:image"       content="/icons/icon-512.png"/>
+
+<!-- Manifest + Icons -->
+<link rel="manifest"         href="/manifest.json"/>
+<link rel="icon"             href="/icons/icon-192.png"/>
+<link rel="apple-touch-icon" href="/icons/icon-192.png"/>
+<link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-192.png"/>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<div id="root"></div>
+<script type="module" src="/src/main.jsx"></script>
+<script>
+// Service Worker Register
+if ("serviceWorker" in navigator) {
+  let newSW = null;
+  window.addEventListener("load", async () => {
+    try {
+      const reg = await navigator.serviceWorker.register("/sw.js", { scope: "/" });
+      setInterval(() => reg.update(), 30 * 60 * 1000);
+      reg.addEventListener("updatefound", () => {
+        const sw = reg.installing;
+        sw.addEventListener("statechange", () => {
+          if (sw.state === "installed" && navigator.serviceWorker.controller) {
+            newSW = sw;
+            window._showUpdateBar?.();
+          }
+        });
+      });
+    } catch (e) { console.log("SW failed:", e); }
+  });
+  window._applyUpdate = () => {
+    newSW?.postMessage({ type: "SKIP_WAITING" });
+    location.reload();
+  };
+}
+</script>
+</body>
+</html>
