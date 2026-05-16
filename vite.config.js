@@ -6,10 +6,16 @@ export default defineConfig({
   build: {
     outDir: "dist",
     rollupOptions: {
-      external: [],
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"],
+          firebase: ["firebase/app", "firebase/auth", "firebase/firestore", "firebase/storage"],
+        },
+      },
     },
   },
+  server: { port: 3000 },
   optimizeDeps: {
-    include: ["firebase/app", "firebase/auth", "firebase/firestore", "firebase/storage", "firebase/messaging"],
+    include: ["react", "react-dom", "firebase/app", "firebase/auth", "firebase/firestore", "firebase/storage", "firebase/messaging"],
   },
 });
