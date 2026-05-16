@@ -3,6 +3,13 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  build: { outDir: "dist" },
-  server: { port: 3000 },
+  build: {
+    outDir: "dist",
+    rollupOptions: {
+      external: [],
+    },
+  },
+  optimizeDeps: {
+    include: ["firebase/app", "firebase/auth", "firebase/firestore", "firebase/storage", "firebase/messaging"],
+  },
 });
