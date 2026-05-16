@@ -1,0 +1,26 @@
+{
+  "name": "LocalFix Bishrampur",
+  "short_name": "LocalFix",
+  "description": "बिश्रामपुर में Plumber, Electrician, Maid, Driver - तुरंत सेवा",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FF6B00",
+  "theme_color": "#FF6B00",
+  "lang": "hi",
+  "categories": ["utilities", "lifestyle"],
+  "icons": [
+    { "src": "/icons/icon-72.png",  "sizes": "72x72",   "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-96.png",  "sizes": "96x96",   "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-128.png", "sizes": "128x128", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-144.png", "sizes": "144x144", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Plumber Book करें", "url": "/?cat=plumber", "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }] },
+    { "name": "Emergency",         "url": "/?screen=emergency", "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }] },
+    { "name": "AI Help",           "url": "/?screen=chat", "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }] }
+  ]
+}
